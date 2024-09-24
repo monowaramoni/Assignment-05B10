@@ -1,1 +1,1 @@
-console.log(hlw);
+document.
