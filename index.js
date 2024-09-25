@@ -6,31 +6,66 @@ document.getElementById('blog-btn').addEventListener('click', function () {
 
 })
 
-// Card functional code here
+// Card-1 functional code here
 
-const donationAmount = document.getElementById('donate-Btn').addEventListener('click', function () {
 
+document.getElementById('donate-Btn').addEventListener('click', function () {
     const inputDonation = parseFloat(document.getElementById('input-donation').value);
+
     const addMoney = document.getElementById('current-balance').innerText;
+    const reservedMoney = parseFloat(document.getElementById('reserved-amount').innerText);
+
     const currentBalance = parseFloat(addMoney);
 
-
     if (isNaN(inputDonation) || inputDonation <= 0) {
-
         alert('Failed to add money. Please enter a positive number.');
         return;
     }
 
+    if (inputDonation > reservedMoney) {
+        alert('Insufficient reserved funds for this donation.');
+        return;
+    }
 
     const newBalance = inputDonation + currentBalance;
+    const newReserved = reservedMoney - inputDonation;
 
+    document.getElementById('current-balance').innerText = newBalance.toFixed(2);
+    document.getElementById('reserved-amount').innerText = newReserved.toFixed(2);
 
-    document.getElementById('current-balance').innerText = newBalance;
+    console.log('New Balance:', newBalance, 'New Reserved:', newReserved);
 
-    console.log('New Balance:', newBalance);
 });
 
 
+
+// Card-2 functional code here
+
+document.getElementById('donation ').addEventListener('click', function () {
+
+    const inputMoney = parseFloat(document.getElementById('input').value);
+    const addMoney = document.getElementById('total-balance').innerText;
+    const reservedMoney = parseFloat(document.getElementById('reserved-amount').innerText);
+    const currentAmount = parseFloat(addMoney);
+
+
+    if (isNaN(inputMoney) || inputMoney <= 0) {
+
+        alert('Failed to add money. Please enter a positive number.');
+        return;
+    }
+    if (inputMoney > reservedMoney) {
+        alert('Insufficient reserved funds for this donation.');
+        return;
+    }
+    const newTotal = inputMoney + currentAmount;
+    const newReserved = reservedMoney - inputMoney;
+
+    document.getElementById('total-balance').innerText = newTotal.toFixed(2);
+    document.getElementById('reserved-amount').innerText = newReserved.toFixed(2);
+
+    console.log('New Balance', newTotal);
+});
 
 //  tab switch Donation to history
 
@@ -53,3 +88,7 @@ donationTab.addEventListener('click', function () {
     );
     document.getElementById("main-section").classList.remove('hidden');
 })
+
+
+
+
