@@ -14,17 +14,17 @@ const donationAmount = document.getElementById('donate-Btn').addEventListener('c
     const addMoney = document.getElementById('current-balance').innerText;
     const currentBalance = parseFloat(addMoney);
 
-    
+
     if (isNaN(inputDonation) || inputDonation <= 0) {
 
         alert('Failed to add money. Please enter a positive number.');
-        return; 
+        return;
     }
 
-   
+
     const newBalance = inputDonation + currentBalance;
-    
-    
+
+
     document.getElementById('current-balance').innerText = newBalance;
 
     console.log('New Balance:', newBalance);
@@ -44,4 +44,12 @@ historyTab.addEventListener('click', function () {
     document.getElementById("main-section").classList.add('hidden');
 
 })
+const donationTab = document.getElementById("donation-tab");
+donationTab.addEventListener('click', function () {
+    donationTab.classList.add("bg-btn-colors");
+    historyTab.classList.remove("bg-btn-colors"
 
+
+    );
+    document.getElementById("main-section").classList.remove('hidden');
+})
